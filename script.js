@@ -79,7 +79,7 @@ const memories = [
     { url: "https://i.ibb.co/XZDnQnL1/Whats-App-Image-2026-02-01-at-4-45-33-PM-1.jpg", title: "", msg: "Memories!" },
     { url: "https://i.ibb.co/0RK9mKv8/Whats-App-Image-2026-02-01-at-4-45-32-PM-2.jpg", title: "", msg: "Memories!" },
     { url: "https://i.ibb.co/TB552XXg/Whats-App-Image-2026-03-03-at-1-08-16-AM.jpg", title: "", msg: "Memories!" },
-    { url: "https://i.ibb.co/svnXRGqC/Whats-App-Image-2026-03-03-at-7-28-25-PM.jpg", title: "", msg: "Memories!" },
+    { url: "https://i.ibb.co/svnXRGqC/Whats-App-Image-2026-03-03-at-7-28-25-PM.jpg", title: "Fun Times", msg: "Memories!" },
     { url: "https://i.ibb.co/Y73h4y4F/Whats-App-Image-2026-03-03-at-7-28-26-PM.jpg", title: "", msg: "Memories!" },
     { url: "https://www.dropbox.com/scl/fi/z12zk9fdca67foneqjo5i/WhatsApp-Video-2026-03-03-at-1.13.55-AM.mp4?rlkey=o8b3s7zh5afl5eextx0s8lb7i&st=dgcgsqq6&dl=1", title: "some vodka🥴🍹", msg: "Cheers!" },
     { url: "https://i.ibb.co/FLsJKsch/Whats-App-Image-2026-02-01-at-4-45-24-PM.jpg", title: "", msg: "Memories!" },
@@ -89,6 +89,7 @@ const memories = [
     { url: "https://i.ibb.co/Y734X8Pm/Whats-App-Image-2026-03-03-at-7-28-24-PM.jpg", title: "", msg: "Memories!" },
     { url: "https://www.dropbox.com/scl/fi/41m3aidg4vzqztqme5j6b/WhatsApp-Video-2026-03-03-at-1.12.37-AM.mp4?rlkey=9q3hu958mjda36jtqd8yil802&st=b5m5kv8g&dl=1", title: "some Upadesham", msg: "Upadesham time!" },
     { url: "https://i.ibb.co/8gj0T75f/Whats-App-Image-2026-02-01-at-4-44-39-PM-1.jpg", title: "😎😎", msg: "Cool vibes" },
+    { url: "https://www.dropbox.com/scl/fi/8j0f7z3qwk1uu07x83d6t/WhatsApp-Video-2026-03-04-at-11.42.49-PM.mp4?rlkey=0xvrgc2m3x9qxbwlse1cm009v&st=5wuwexab&dl=1", title: "Holi", msg: "Colorful vibes!" },
     { url: "https://i.ibb.co/ksmhhbgB/Whats-App-Image-2026-02-01-at-4-45-30-PM-1.jpg", title: "And so on...", msg: "And so on..." }
 ];
 
