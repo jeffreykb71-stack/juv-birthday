@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Juvan 🧸</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_2c54e2a8d2.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Custom Volume Modal -->
+    <div id="volumeModal" class="modal">
+        <div class="modal-content animate__animated animate__bounceIn">
+            <div class="modal-emoji">🔊💕</div>
+            <p class="modal-text">Increase your volume for the best experience! 🎵✨</p>
+            <button class="modal-btn" onclick="closeVolumeModal()">Let's Go! 🚀</button>
+        </div>
+    </div>
+
+    <!-- Custom Notification Toast -->
+    <div id="customNotification" class="notification-toast"></div>
+
+    <div id="screen1" class="screen active">
+        <div class="welcome-container">
+            <span style="font-size: 6rem; animation: bounce 2s infinite;">🧸</span>
+            <h1 style="font-size: 3rem; margin: 20px 0;">Are you Juvan?</h1>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin: 15px 0;">✨ Welcome to a special journey ✨</p>
+            <button class="btn btn-yes" onclick="startExperience()">YES</button>
+            <button class="btn btn-no" onclick="kickOut('stop looking over here there is nothing here for you, go do some work')">NO</button>
+        </div>
+    </div>
+
+    <div id="screen2" class="screen">
+        <div class="question-container">
+            <span style="font-size: 4rem; margin-bottom: 20px; display: block;">🤔</span>
+            <h1>Are you really Juvan??</h1>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin: 15px 0;">🔍 Just making sure...</p>
+            <button class="btn btn-yes" onclick="nextScreen('game1')">YES</button>
+            <button class="btn btn-no" onclick="kickOut('GO MIND YOUR OWN BUSINESS')">NO</button>
+        </div>
+    </div>
+
+    <!-- Game 1: Catch the Emoji -->
+    <div id="game1" class="screen">
+        <div class="game-container">
+            <h2>Quick Game: Catch the Bear! 🧸</h2>
+            <p>Click the bear 10 times before time runs out!</p>
+            <div class="score-display">
+                <span>Score: <span id="bearScore">0</span>/10</span> | 
+                <span>Time: <span id="bearTime">15</span>s</span>
+            </div>
+            <div style="position: relative; height: 300px; margin: 20px 0;">
+                <div id="clickTarget" onclick="catchBear()">🧸</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen3" class="screen">
+        <div style="max-width: 700px; margin: auto; background: rgba(255,255,255,0.4); padding: 40px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 2px solid rgba(255,255,255,0.5);">
+            <div style="font-size: 3rem; margin-bottom: 20px;">💭💕</div>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: #333;">Well, it's been nearly half a year since we actually talked (to be exact 6 months 16 days or 200 days). Oddly, it feels I have known you much, much before and we have been through one heck of a roller-coaster since that. So here is a little reminder of all of our journey through these past months.</p>
+            <div style="font-size: 2rem; margin: 20px 0;">✨🌟✨</div>
+            <button class="btn btn-yes" onclick="nextScreen('cutescene')" style="margin-top: 20px; font-size: 1.3rem; padding: 18px 45px;">See our Journey ✨</button>
+        </div>
+    </div>
+
+    <!-- Cute Scene -->
+    <div id="cutescene" class="screen">
+        <div class="game-container">
+            <div class="floating-hearts">💕</div>
+            <h2 style="color: #ff6b6b;">A Little Something... 🎀</h2>
+            <p class="cute-message">
+                You know what's special about you? 🌟<br>
+                Your laugh that lights up the room ✨<br>
+                Your kindness that touches hearts 💝<br>
+                Your smile that makes everything better 😊<br>
+                <br>
+                You're absolutely one of a kind! 🦄
+            </p>
+            <div class="floating-hearts">💕</div>
+            <button class="btn btn-yes" onclick="nextScreen(4)" style="margin-top: 30px;">Continue 💖</button>
+        </div>
+    </div>
+
+    <div id="screen4" class="screen">
+        <div id="memoryCard" class="card animate__animated">
+            <div id="mediaContainer" onclick="showPopup()"></div>
+            <p id="currentTitle" style="font-weight: bold; margin-top: 15px;"></p>
+        </div>
+        <div class="navigation-container">
+            <button class="nav-btn nav-prev" onclick="prevPhoto()">
+                <span class="nav-icon">❮</span>
+                <span class="nav-text">Back</span>
+            </button>
+            <div class="progress-indicator">
+                <span id="currentPhoto">1</span> / <span id="totalPhotos">21</span>
+            </div>
+            <button class="nav-btn nav-next" onclick="nextPhoto()">
+                <span class="nav-text">Next</span>
+                <span class="nav-icon">❯</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Amazing Transition -->
+    <div id="transition" class="screen">
+        <div style="max-width: 700px; margin: auto; text-align: center;">
+            <div class="transition-screen">
+                <div style="font-size: 4rem; margin-bottom: 30px;">
+                    <span class="sparkle">✨</span>
+                    <span class="sparkle" style="animation-delay: 0.3s;">⭐</span>
+                    <span class="sparkle" style="animation-delay: 0.6s;">✨</span>
+                </div>
+                <h1 style="color: #fff; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); font-size: 2.5rem;">
+                    All these memories... 💫
+                </h1>
+                <p style="font-size: 1.4rem; color: #fff; margin: 30px 0; line-height: 1.8;">
+                    Every laugh, every moment, every silly thing...<br>
+                    They all led to this special day! 🎊
+                </p>
+                <div style="font-size: 3rem; margin: 30px 0;">
+                    🎈🎉🎁🎂🎊
+                </div>
+                <button class="btn btn-yes" onclick="nextScreen(5)" style="font-size: 1.3rem; padding: 20px 50px;">
+                    Let's Celebrate! 🎉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen5" class="screen animate__animated animate__zoomIn">
+        <img src="https://img.icons8.com/emoji/512/birthday-cake-emoji.png" class="cake-img">
+        <p>🥂 to all the days of fun and drama all of us had together and 🥂 to the hope we will have many many more.</p>
+        <h1 style="color: #ff6b6b;">HAPPY BIRTHDAY JUVAN (NUNU)CHECHI</h1>
+        <img src="https://i.ibb.co/LzbKgXhk/f5f9409c-f086-4a1d-914e-0cd06c11fe60-removebg-preview.png" style="width:150px; border-radius:15px; margin-top:10px;">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
