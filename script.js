@@ -108,12 +108,10 @@ function updateCard() {
         container.innerHTML = `
             <video id="journeyVideo" src="${item.url}" class="media-content" autoplay loop muted playsinline></video>
             <button class="sound-btn" onclick="event.stopPropagation(); toggleSound();">🔊</button>
-            <div class="card-hint">👆 Click to view message</div>
         `;
     } else {
         container.innerHTML = `
             <img src="${item.url}" class="media-content">
-            <div class="card-hint">👆 Click to view message</div>
         `;
     }
     document.getElementById('currentTitle').innerText = item.title;
@@ -140,7 +138,6 @@ function nextPhoto() {
         currentIndex++; 
         updateCard(); 
     } else { 
-        // THIS NOW GOES TO THE STICKY NOTE
         nextScreen('screen_stickynote'); 
     } 
 }
@@ -157,12 +154,11 @@ function showPopup() {
     confetti({ particleCount: 30 }); 
 }
 
-// THIS PEELS OFF THE STICKY NOTE
 function peelOff() {
     document.getElementById('note').classList.add('fall');
     setTimeout(() => { 
         nextScreen(5); 
-    }, 1000); // Waits 1 second for the peel animation before showing the final page
+    }, 1000); 
 }
 
 function nextScreen(screen) {
