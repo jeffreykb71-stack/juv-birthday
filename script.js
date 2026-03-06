@@ -2,33 +2,21 @@
 const bgMusic = document.getElementById('bgMusic');
 
 function startExperience() {
-    // Show custom volume modal
     document.getElementById('volumeModal').classList.add('show');
 }
 
 function closeVolumeModal() {
-    // Hide modal
     document.getElementById('volumeModal').classList.remove('show');
-    
-    // Start music
     bgMusic.play().catch(e => console.log('Music autoplay prevented'));
-    
-    // Add confetti
     confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-    
-    // Go to next screen
     nextScreen(2);
 }
 
-// Custom notification function
 function showNotification(message, type = 'info') {
     const notification = document.getElementById('customNotification');
     notification.textContent = message;
     notification.className = 'notification-toast show ' + type;
-    
-    setTimeout(() => {
-        notification.classList.remove('show');
-    }, 3000);
+    setTimeout(() => { notification.classList.remove('show'); }, 3000);
 }
 
 // Game 1: Catch the Bear
@@ -41,12 +29,8 @@ function moveBear() {
     const container = target.parentElement;
     const maxX = container.clientWidth - 80;
     const maxY = container.clientHeight - 80;
-    
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-    
-    target.style.left = randomX + 'px';
-    target.style.top = randomY + 'px';
+    target.style.left = (Math.random() * maxX) + 'px';
+    target.style.top = (Math.random() * maxY) + 'px';
 }
 
 function catchBear() {
@@ -120,7 +104,6 @@ function updateCard() {
 
     const item = memories[currentIndex];
     if (item.url.toLowerCase().includes('.mp4')) {
-        // Added a sound button specifically for video cards
         container.innerHTML = `
             <video id="journeyVideo" src="${item.url}" class="media-content" autoplay loop muted playsinline></video>
             <button class="sound-btn" onclick="event.stopPropagation(); toggleSound();">🔊</button>
@@ -134,11 +117,9 @@ function updateCard() {
     }
     document.getElementById('currentTitle').innerText = item.title;
     
-    // Update progress indicator
     document.getElementById('currentPhoto').innerText = currentIndex + 1;
     document.getElementById('totalPhotos').innerText = memories.length;
     
-    // Add confetti on card display
     if (currentIndex % 5 === 0) {
         confetti({ particleCount: 30, spread: 50, origin: { y: 0.7 } });
     }
@@ -148,7 +129,6 @@ function toggleSound() {
     const video = document.getElementById('journeyVideo');
     if (video) {
         video.muted = !video.muted;
-        // Simple visual feedback for Juvan
         const soundBtn = document.querySelector('.sound-btn');
         soundBtn.innerText = video.muted ? "🔇" : "🔊";
     }
@@ -159,7 +139,8 @@ function nextPhoto() {
         currentIndex++; 
         updateCard(); 
     } else { 
-        nextScreen('transition'); 
+        // THIS NOW GOES TO THE STICKY NOTE
+        nextScreen('screen_stickynote'); 
     } 
 }
 
@@ -175,28 +156,34 @@ function showPopup() {
     confetti({ particleCount: 30 }); 
 }
 
+// THIS PEELS OFF THE STICKY NOTE
+function peelOff() {
+    document.getElementById('note').classList.add('fall');
+    setTimeout(() => { 
+        nextScreen(5); 
+    }, 1000); // Waits 1 second for the peel animation before showing the final page
+}
+
 function nextScreen(screen) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     
-    // Handle both string IDs and numbers
     const screenId = typeof screen === 'number' ? 'screen' + screen : screen;
     document.getElementById(screenId).classList.add('active');
     
-    // Start games when their screens become active
     if(screenId === 'game1') startBearGame();
     if(screen === 4 || screenId === 'screen4') {
         updateCard();
         addFloatingEmojis();
     }
-    if(screen === 5 || screenId === 'screen5') setInterval(() => { confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } }); }, 800);
+    if(screen === 5 || screenId === 'screen5') {
+        setInterval(() => { confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } }); }, 800);
+    }
 }
 
-// Add floating decorative emojis
 function addFloatingEmojis() {
     const emojis = ['✨', '💫', '⭐', '🌟', '💝', '💖', '🎀', '🎈'];
     const screen4 = document.getElementById('screen4');
     
-    // Remove existing floating emojis
     document.querySelectorAll('.floating-emoji').forEach(el => el.remove());
     
     for (let i = 0; i < 8; i++) {
