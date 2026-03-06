@@ -200,5 +200,5 @@ function addFloatingEmojis() {
 }
 
 function kickOut(msg) {
-    document.body.innerHTML = `<div style="text-align:center; padding:50px;"><div style="font-size:4rem;">🥊 🔫</div><h1>${msg}</h1><button class="btn btn-yes" onclick="location.reload()">Try Again</button></div>`;
+    document.body.innerHTML = `<div style="text-align:center; padding:50px;"><div style="font-size:4rem;">🥊 🔫</div><h1>${msg}</h1><button class="btn btn-yes" onclick="location.reload()">Wait I'm Really Juvan</button></div>`;
 }
